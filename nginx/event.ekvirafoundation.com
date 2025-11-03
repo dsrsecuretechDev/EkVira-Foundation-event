@@ -2,7 +2,7 @@ server {
     listen 80;
     server_name event.ekvirafoundation.com www.event.ekvirafoundation.com;
     # If you use certbot, let it handle ACME challenge; otherwise:
-   root /var/www;   # path to React build directory
+   root /var/www/html;   # path to React build directory
     index index.html;
 
     # Large uploads support (adjust if you expect bigger files)
