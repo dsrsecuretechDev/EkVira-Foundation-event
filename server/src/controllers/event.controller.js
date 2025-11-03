@@ -1,5 +1,5 @@
 
-import { createEvent } from "../service/event.services.js";
+import { createEvent, getEventService } from "../service/event.services.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 
 /**
@@ -44,5 +44,28 @@ export const createEventController = async (req, res, next) => {
     // Handle other server errors
     console.error("Server Error creating user:", error);
     return next(new ErrorHandler("Internal Server Error", 500));
+  }
+};
+
+
+
+export const getEvent = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const search = req.query.search || "";
+
+    const result = await getEventService(page, limit, search);
+
+    res.status(200).json({
+      success: true,
+      message: "Users fetched successfully",
+      ...result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message || "Failed to fetch users",
+    });
   }
 };

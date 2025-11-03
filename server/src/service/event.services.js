@@ -17,3 +17,32 @@ export const createEvent = async (eventData) => {
     throw error;
   }
 };
+
+// 🟣 Get All Users (with pagination + search)
+export const getEventService = async (page = 1, limit = 10, search = "") => {
+  const skip = (page - 1) * limit;
+  const filter = {};
+
+  if (search) {
+    filter.$or = [
+      { fullName: { $regex: search, $options: "i" } },
+      { mobileNumber: { $regex: search, $options: "i" } },
+      { village: { $regex: search, $options: "i" } },
+      { coordinatorName: { $regex: search, $options: "i" } },
+    ];
+  }
+
+  const totalEvent = await Event.countDocuments(filter);
+  const events = await Event.find(filter)
+    .skip(skip)
+    .limit(limit)
+    .sort({ createdAt: -1 });
+
+  return {
+    page,
+    limit,
+    totalPages: Math.ceil(totalEvent / limit),
+    totalEvent,
+    events,
+  };
+};
