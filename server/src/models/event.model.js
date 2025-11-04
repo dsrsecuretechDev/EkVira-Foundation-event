@@ -15,11 +15,10 @@ const EventSchema = new mongoose.Schema(
       trim: true,
       match: /^\d{10}$/,
     },
-    village: {
-      type: String,
+    villageId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Village",
       required: true,
-      trim: true,
-      minlength: 2,
     },
     address: {
       type: String,

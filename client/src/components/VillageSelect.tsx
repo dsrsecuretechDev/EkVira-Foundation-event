@@ -1,3 +1,4 @@
+// export default VillageSelect;
 import { useState, useEffect, useMemo } from "react";
 
 const normalizeText = (text = "") =>
@@ -8,308 +9,62 @@ const normalizeText = (text = "") =>
     .trim();
 
 const VillageSelect = ({ formik }: any) => {
-  // const villages = [/* your full list here */];
-
-  const villages = [
-    "संगमनेर शहर",
-    "अकलापूर",
-    "अंभोरे",
-    "आनंदवाडी",
-    "आंबी खालसा",
-    "आंबी दुमाला",
-    "आभाळवाडी",
-    "आश्वी खु ",
-    "आश्वी बु ",
-    "उंबरी बाळापूर",
-    "ओझर खु",
-    "ओझर बु",
-    "औरंगपुर",
-    "कणसेवाडी",
-    "कनकापुर",
-    "कनोली",
-    "करुले",
-    "कर्जुले पठार",
-    "कऱ्हे",
-    "काकडवाडी",
-    "कासारा दुमाला",
-    "कासारे",
-    "कुंभारवाडी",
-    "कुरकुटवाडी",
-    "कुरकुंडी",
-    "कुरण",
-    "केळेवाडी",
-    "कोकणगाव",
-    "कोकणेवाडी",
-    "कोंची",
-    "कोल्हेवाडी",
-    "कोळवाडे",
-    "कौठे कमळेश्वर",
-    "कौठे खु.",
-    "कौठे धांदरफळ",
-    "कौठे बु.",
-    "कौठे मलकापूर",
-    "कौठेवाडी",
-    "खंदरमाळवाडी",
-    "खरशिंदे",
-    "खराडी",
-    "खळी",
-    "खांजापूर",
-    "खांडगाव",
-    "खांडगेदरा",
-    "खांबे",
-    "खैरदरा",
-    "गुंजाळवाडी",
-    "गुंजाळवाडी (राहाणे आखाडा)",
-    "गुंजाळवाडी पठार",
-    "गोडसेवाडी",
-    "घारगाव",
-    "घुलेवाडी",
-    "चंदनापुरी",
-    "चनेगांव",
-    "चिकणी",
-    "चिखली",
-    "चिंचपुर खु",
-    "चिंचपुर बु",
-    "चिंचोली गुरव",
-    "चौधरवाडी",
-    "जवळे कडलग",
-    "जवळे बाळेश्वर",
-    "जाखुरी",
-    "जांबुत खु.",
-    "जांबूत बु.",
-    "जांभूळवाडी",
-    "जोर्वे",
-    "झरेकाठी",
-    "झोळे",
-    "डिग्रस",
-    "डोळासणे",
-    "ढोलेवाडी",
-    "तळेगाव दिघे",
-    "तिगाव",
-    "दरेवाडी",
-    "दाढ खु.",
-    "देवकौठे",
-    "देवगाव",
-    "धांदरफळ खु",
-    "धांदरफळ बु",
-    "धुपे",
-    "नांदुरी दुमाला",
-    "नांदूर खांदरमाळ",
-    "नान्नज दुमाला",
-    "निंभाळे",
-    "निमगाव खु.",
-    "निमगांव जाळी",
-    "निमगाव टेंभी",
-    "निमगाव बु.",
-    "निमगाव भोजापुर",
-    "निमज",
-    "निमोण",
-    "निळवंडे",
-    "पळसखेडे",
-    "पानोडी",
-    "पारेगाव खु.",
-    "पारेगाव बु",
-    "पिंपरणे",
-    "पिंपळगाव कोंझिरा",
-    "sangamner city",
-    "Akalapur",
-    "Ajamapur",
-    "Ambhore",
-    "Abhalawadi",
-    "Aramapur",
-    "Ashvi Khurd",
-    "Ashvi Budruk",
-    "Ambikhalasa",
-    "Ambi Dumala",
-    "Umbari",
-    "Ojhar Khurd",
-    "Ojhar Budruk",
-    "Aurangapur",
-    "Kanasewadi",
-    "Kanakapur",
-    "Kanoli",
-    "Karule",
-    "Karjule Pathar",
-    "Karhe",
-    "Kakadawadi",
-    "Kasara Dumala",
-    "Kasare",
-    "Kurakutawadi",
-    "Kurakundi",
-    "Kuran",
-    "Kumbharawadi",
-    "Kelewadi",
-    "Kokanagaon",
-    "Kokanewadi",
-    "Kolhewadi",
-    "Kolavade",
-    "Konchi",
-    "Kauthe Kamaleshvar",
-    "Kauthe Khurd",
-    "Kauthe Dhandaraphal",
-    "Kauthe Budruk",
-    "Kauthe Malakapur",
-    "Kauthewadi",
-    "Kharashinde",
-    "Kharadi",
-    "Khali",
-    "Khanjapur",
-    "Khandagaon",
-    "Khandagedara",
-    "Khambe",
-    "Khandaramalawadi",
-    "Gabhanawadi",
-    "Gunjalawadi",
-    "Gunjalawadi Pathar",
-    "Godasewadi",
-    "Gharagaon",
-    "Ghulewadi",
-    "Chanegaon",
-    "Chikani",
-    "Chikhali",
-    "Chinchapur Khurd",
-    "Chinchapur Budruk",
-    "Chincholi Gurav",
-    "Chandanapuri",
-    "Javalekadalag",
-    "Javale Baleshvar",
-    "Jakhuri",
-    "Jambut Khurd",
-    "Jambut Budruk",
-    "Junegaon",
-    "Jorve",
-    "Jharekathi",
-    "Jhole",
-    "Digras",
-    "Dolasane",
-    "Dholewadi",
-    "Talegaon",
-    "Tigaon",
-    "Darewadi",
-    "Dadh Khurd",
-    "Devakauthe",
-    "Devagaon",
-    "Dhandaraphal Khurd",
-    "Dhandaraphal Budruk",
-    "Dhupe",
-    "Nannaj Dumala",
-    "Nandur Khandaramal",
-    "Nanduri Dumala",
-    "Nimagaon Khurd",
-    "Nimagaonajali",
-    "Nimagaon Tembhi",
-    "Nimagaon Budruk",
-    "Nimagaon Bhojapur",
-    "Nimaj",
-    "Nimon",
-    "Nilavande",
-    "Nimbale",
-    "Palasakhede",
-    "Panodi",
-    "Paregaon Khurd",
-    "Paregaon Budruk",
-    "Pimparane",
-    "Pimpalagaon Konjhira",
-    "Pimpalagaon Depa",
-    "Pimpalagaon Matha",
-    "Pimpale",
-    "Pimpri Lauki Ajamapur",
-    "Pemagiri",
-    "Pemarewadi",
-    "Pokhari Baleshvar",
-    "Pokhari Haveli",
-    "Pratapapur",
-    "Balapur",
-    "Bambalewadi",
-    "Birewadi",
-    "Bota",
-    "Borabanawadi",
-    "Bhojadari",
-    "Manoli",
-    "Mahalawadi",
-    "Maladad",
-    "Malunje",
-    "Malawadi",
-    "Malegaon Pathar",
-    "Malegaon Haveli",
-    "Manchi",
-    "Mandave Budruk",
-    "Mirjhapur",
-    "Mirapur",
-    "Megalawadi",
-    "Mendhavan",
-    "Mangalapur",
-    "Mhasavandi",
-    "Yelakhopawadi",
-    "Ranakhambawadi",
-    "Rahimapur",
-    "Rajapur",
-    "Rayate",
-    "Rayatewadi",
-    "Lohare",
-    "Vadagaonapan",
-    "Vadagaon Landaga",
-    "Vadajhari Khurd",
-    "Vadajhari Budruk",
-    "Vanakute",
-    "Varavandi",
-    "Varudi Pathar",
-    "Vaghapur",
-    "Velhale",
-    "Vaiduwadi",
-    "Shibalapur",
-    "Shirasagaon",
-    "Shirapur",
-    "Shivapur",
-    "Shindodi",
-    "Shedagaon",
-    "Shelakewadi",
-    "Shendewadi",
-    "Samanapur",
-    "Sakur",
-    "Sadatapur",
-    "Sayakhindi",
-    "Sarole Pathar",
-    "Savaragaon Ghule",
-    "Savaragaon Tal",
-    "Savarachol",
-    "Sangaoni",
-    "Sukewadi",
-    "Sonewadi",
-    "Sonoshi",
-    "Sangamaner Khurd",
-    "Sangamaner Budruk",
-    "Hasanabad",
-    "Hivaragaon Pathar",
-    "Hivaragaon Pavasa",
-    "Hangewadi",
-  ];
-
+  const [villages, setVillages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // ✅ Debounce
+  // ✅ Fetch villages from backend
+  useEffect(() => {
+    const fetchVillages = async () => {
+      try {
+        const res = await fetch(
+          "https://event.ekvirafoundation.com/api/v1/villages"
+        );
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message || "Failed to fetch");
+        setVillages(data.data);
+      } catch (err) {
+        console.error("Error fetching villages:", err);
+        setError("गावे लोड करण्यात अडचण आली (Error loading villages)");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchVillages();
+  }, []);
+
+  // ✅ Debounce search
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedSearch(searchTerm), 250);
     return () => clearTimeout(handler);
   }, [searchTerm]);
 
-  // ✅ Filter villages
+  // ✅ Filter villages dynamically
   const filteredVillages = useMemo(() => {
-    if (!debouncedSearch) return villages?.slice(0, 30);
+    if (!debouncedSearch) return villages.slice(0, 30);
     const search = normalizeText(debouncedSearch);
     return villages
-      .filter((v) => normalizeText(v).includes(search))
+      .filter(
+        (v: any) =>
+          normalizeText(v.village_name_en).includes(search) ||
+          normalizeText(v.village_name_mr).includes(search)
+      )
       .slice(0, 30);
-  }, [debouncedSearch]);
+  }, [debouncedSearch, villages]);
 
-  // ✅ Handle village select
-  const handleSelect = (village: string) => {
-    formik.setFieldValue("village", village);
-    setSearchTerm(village);
+  // ✅ Select village
+  const handleSelect = (village: any) => {
+    formik.setFieldValue("village", village._id);
+    formik.setFieldTouched("village", true, true);
     setShowDropdown(false);
+    setSearchTerm("");
   };
+
+  const selectedVillage: any =
+    villages.find((v: any) => v._id === formik.values.village) || null;
 
   return (
     <div className="relative">
@@ -317,56 +72,86 @@ const VillageSelect = ({ formik }: any) => {
         गाव
       </label>
 
-      {/* ✅ Search box */}
-      <input
-        id="village"
-        type="text"
-        name="village"
-        placeholder="गाव शोधा..."
-        autoComplete="off"
-        value={formik.values.village || searchTerm}
-        onFocus={() => setShowDropdown(true)}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-          formik.setFieldValue("village", e.target.value);
-        }}
-        onBlur={(e) => {
-          setTimeout(() => setShowDropdown(false), 100);
-          formik.handleBlur(e); // ✅ ensure validation runs
-        }}
-        className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white"
-        // className={`w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 ${
-        //   formik.touched.village && formik.errors.village
-        //     ? "border-red-500 focus:ring-red-300"
-        //     : "focus:ring-[#2E005C]"
-        // }`}
-      />
+      {/* 👇 Main box (click to open dropdown) */}
+      <div
+        tabIndex={0}
+        onClick={() => setShowDropdown((prev) => !prev)}
+        className={`w-full border rounded-md px-3 py-2 mt-1  cursor-pointer flex justify-between items-center ${
+          formik.touched.village && formik.errors.village
+            ? "border-red-500"
+            : "border-gray-300 hover:border-[#2E005C]"
+        }`}
+      >
+        {selectedVillage ? (
+          <span>
+            {selectedVillage.village_name_mr} ({selectedVillage.village_name_en}
+            )
+          </span>
+        ) : (
+          <span className="text-gray-400">गाव निवडा...</span>
+        )}
+        <span className="text-gray-400 text-sm">▼</span>
+      </div>
 
-      {/* ✅ Dropdown list */}
-      {showDropdown && filteredVillages.length > 0 && (
-        <ul className="absolute z-10 w-full bg-white text-black border rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
-          {filteredVillages.map((village, index) => (
-            <li
-              key={index}
-              onMouseDown={() => handleSelect(village)}
-              className="px-3 py-2 hover:bg-[#F3E8FF] cursor-pointer text-sm"
-            >
-              {village}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* ✅ No results */}
-      {showDropdown && filteredVillages.length === 0 && (
-        <div className="absolute z-10 w-full bg-white text-gray-600 border rounded-md mt-1 p-2 text-sm text-center shadow-lg">
-          काहीही सापडले नाही
-        </div>
-      )}
-
-      {/* ✅ Validation error */}
+      {/* ⚠️ Validation */}
       {formik.touched.village && formik.errors.village && (
         <p className="text-red-500 text-xs mt-1">{formik.errors.village}</p>
+      )}
+
+      {/* 🧭 Dropdown */}
+      {showDropdown && (
+        <div className="absolute z-10 w-full bg-white border rounded-md mt-1 shadow-lg overflow-hidden">
+          {/* 🔍 Search bar inside dropdown */}
+          <div className="p-2 border-b bg-gray-50">
+            <input
+              type="text"
+              placeholder="गाव शोधा..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full border border-gray-300 text-black rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
+              autoFocus
+            />
+          </div>
+
+          {/* 🌀 Loading */}
+          {loading && (
+            <div className="p-3 text-gray-500 text-sm text-center">
+              गावे लोड होत आहेत...
+            </div>
+          )}
+
+          {/* ⚠️ Error */}
+          {error && !loading && (
+            <div className="p-3 text-red-500 text-sm text-center  border-t border-red-300">
+              {error}
+            </div>
+          )}
+
+          {/* ✅ List */}
+          {!loading && !error && filteredVillages.length > 0 && (
+            <ul className="max-h-60 overflow-y-auto text-sm scrollbar-thin">
+              {filteredVillages.map((village: any) => (
+                <li
+                  key={village._id}
+                  onMouseDown={() => handleSelect(village)}
+                  className="px-3 py-2 text-black hover:bg-[#F3E8FF] cursor-pointer flex justify-between"
+                >
+                  <span>{village.village_name_mr}</span>
+                  <span className="text-black text-xs">
+                    {village.village_name_en}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* 🚫 No results */}
+          {!loading && !error && filteredVillages.length === 0 && (
+            <div className="p-3 text-gray-600 text-sm text-center">
+              काहीही सापडले नाही
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

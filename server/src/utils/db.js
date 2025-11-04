@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import { seedVillages } from "../seed/villageSeeder.js";
 dotenv.config();
 
 const dbUrl = process.env.DB_URL || "";
@@ -9,8 +10,9 @@ const connectDB = async () => {
     await mongoose.connect(dbUrl).then((data) => {
       console.log(`✅ DataBase connected success ${data.connection.host}`);
     });
+    seedVillages();
   } catch (error) {
-    console.log("❌ "+ error.message);
+    console.log("❌ " + error.message);
     setTimeout(connectDB, 5000);
   }
 };

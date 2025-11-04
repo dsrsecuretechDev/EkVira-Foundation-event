@@ -5,11 +5,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import VillageSelect from "./VillageSelect";
-
 export default function TicketButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [apiError, setApiError] = useState("");
   const navigate = useNavigate();
+
+  const objectIdRegex = /^[0-9a-fA-F]{24}$/;
 
   // ✅ Validation schema
   const validationSchema = Yup.object({
@@ -26,8 +27,14 @@ export default function TicketButton() {
         (value) => !/[^\d]/.test(value || "")
       ),
     address: Yup.string().required("पत्ता आवश्यक आहे"),
-    village: Yup.string().required("गाव आवश्यक आहे"),
-    sectionName: Yup.string().optional(),
+    village: Yup.string()
+      .matches(objectIdRegex, "अवैध गाव आयडी (Invalid village ID)")
+      .required("गाव आवश्यक आहे"),
+    sectionName: Yup.string().when("village", {
+      is: (village: any) => village === "6734c7f10000000000000001",
+      then: (schema) => schema.required("विभागाचे नाव आवश्यक आहे"),
+      otherwise: (schema) => schema.optional(),
+    }),
     birthDate: Yup.date()
       .required("जन्मतारीख आवश्यक आहे")
       .max(
@@ -209,8 +216,7 @@ export default function TicketButton() {
 
               <VillageSelect formik={formik} />
 
-              {(formik.values.village === "संगमनेर शहर" ||
-                formik.values.village === "sangamner city") && (
+              {formik.values.village === "6734c7f10000000000000001" && (
                 <div>
                   <label className="block text-sm font-medium">
                     विभागाचे नाव
@@ -229,6 +235,12 @@ export default function TicketButton() {
                       </option>
                     ))}
                   </select>
+
+                  {formik.touched.sectionName && formik.errors.sectionName && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {formik.errors.sectionName}
+                    </p>
+                  )}
                 </div>
               )}
 
