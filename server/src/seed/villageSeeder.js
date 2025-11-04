@@ -170,8 +170,6 @@ const villages = [
 { village_name_mr: "सुकेवाडी", village_name_en: "Sukewadi" },
 { village_name_mr: "सोनेवाडी", village_name_en: "Sonewadi" },
 { village_name_mr: "सोनोशी", village_name_en: "Sonoshi" },
-{ village_name_mr: "संगमनेर खुर्द", village_name_en: "Sangamaner Khurd" },
-{ village_name_mr: "संगमनेर बुद्रुक", village_name_en: "Sangamaner Budruk" },
 { village_name_mr: "हसनाबाद", village_name_en: "Hasanabad" },
 { village_name_mr: "हिवरगाव पठार", village_name_en: "Hivaragaon Pathar" },
 { village_name_mr: "हिवरगाव पावसा", village_name_en: "Hivaragaon Pavasa"},
