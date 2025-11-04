@@ -6,21 +6,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import VillageSelect from "./VillageSelect";
 
-// ✅ Villages list
-const villages = [
-  "संगमनेर शहर",
-  "अकलापूर",
-  "आंभोरे",
-  "आनंदवाडी",
-  "आंबी खालसा",
-  "आंबी दुमाला",
-  "आभाळवाडी",
-  "आश्वी खु ",
-  "आश्वी बु ",
-  "उंबरी बाळापूर",
-  // ... (rest of your list)
-];
-
 export default function TicketButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [apiError, setApiError] = useState("");
@@ -184,10 +169,18 @@ export default function TicketButton() {
                   name="mobileNumber"
                   placeholder="१० अंकी संख्या प्रविष्ट करा"
                   value={formik.values.mobileNumber}
-                  onChange={formik.handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    // Allow only digits and max 10 characters
+                    if (/^\d{0,10}$/.test(value)) {
+                      formik.setFieldValue("mobileNumber", value);
+                    }
+                  }}
                   onBlur={formik.handleBlur}
                   className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white"
                 />
+
+                {/* Validation error */}
                 {formik.touched.mobileNumber && formik.errors.mobileNumber && (
                   <p className="text-red-500 text-xs mt-1">
                     {formik.errors.mobileNumber}
@@ -214,10 +207,10 @@ export default function TicketButton() {
                 )}
               </div>
 
-              {/* Village Select */}
-              <VillageSelect formik={formik} villages={villages} />
+              <VillageSelect formik={formik} />
 
-              {formik.values.village === "संगमनेर शहर" && (
+              {(formik.values.village === "संगमनेर शहर" ||
+                formik.values.village === "sangamner city") && (
                 <div>
                   <label className="block text-sm font-medium">
                     विभागाचे नाव
