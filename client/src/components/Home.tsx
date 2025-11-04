@@ -1,5 +1,5 @@
 import TicketButton from "./TicketButton";
-import img from "../assets/FolkAkhyan.jpg";
+import img from "../assets/ek_wira.png";
 
 export default function Home() {
   return (
