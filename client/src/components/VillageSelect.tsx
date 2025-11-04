@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const VillageSelect = ({ formik, villages }) => {
+const VillageSelect = ({ formik, villages }: any) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
 
   // Filter villages based on search
-  const filteredVillages = villages.filter((v) =>
+  const filteredVillages = villages.filter((v: any) =>
     v.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -26,7 +26,7 @@ const VillageSelect = ({ formik, villages }) => {
         }}
         onBlur={() => {
           setTimeout(() => setShowDropdown(false), 100); // delay to allow selection
-          formik.handleBlur(e);
+          // formik.handleBlur(e);
         }}
         className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
       />
@@ -34,7 +34,7 @@ const VillageSelect = ({ formik, villages }) => {
       {/* Dropdown list */}
       {showDropdown && filteredVillages.length > 0 && (
         <ul className="absolute z-10 w-full bg-white text-black border rounded-md mt-1 max-h-40 overflow-y-auto shadow-lg">
-          {filteredVillages.map((v) => (
+          {filteredVillages.map((v: any) => (
             <li
               key={v}
               onMouseDown={() => {
