@@ -1,11 +1,12 @@
 import TicketButton from "./TicketButton";
+import img from "../assets/FolkAkhyan.jpg";
 
 export default function Home() {
   return (
     <div className="relative w-full h-screen  flex items-center justify-center overflow-hidden">
       {/* Fullscreen Image - Always fully visible */}
       <img
-        src="../../public/FolkAkhyan.jpg" // Replace with your uploaded image path or Cloudinary link
+        src={img} // Replace with your uploaded image path or Cloudinary link
         alt="The Folk Abhiyan"
         className="w-full h-full object-contain"
       />
