@@ -15,7 +15,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   const handleLogin = () => {
     // 🔒 Replace with your own authentication logic
-    if (username === "eventupdate" && password === "eventdata2024") {
+    if (username === "eventupdate" && password === "eventdata2025") {
       localStorage.setItem("auth", "true");
       setIsAuthenticated(true);
       setShowLogin(false);
