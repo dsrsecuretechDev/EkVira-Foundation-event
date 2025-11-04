@@ -236,7 +236,7 @@ export default function TicketButton() {
       {/* Main Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-[#2E005C] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#40007F] transition"
+        className="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-400 underline underline-offset-4 decoration-red-500 transition"
       >
         कार्यक्रम प्रवेशपत्रिका
       </button>

@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Success from "./components/success";
+import ProtectedRoute from "./components/ProtectedRoute";
+import EventList from "./components/EventList";
 
 function App() {
   return (
@@ -12,6 +14,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/success" element={<Success />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
+            <Route
+              path="/events"
+              element={
+                <ProtectedRoute>
+                  <EventList />
+                </ProtectedRoute>
+              }
+            />
+            
           </Routes>
         </Router>
       </div>
