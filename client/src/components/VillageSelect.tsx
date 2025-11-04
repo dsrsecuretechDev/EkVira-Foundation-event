@@ -113,176 +113,176 @@ const VillageSelect = ({ formik }:any) => {
     "पिंपळगाव कोंझिरा",
     "sangamner city",
     "Akalapur"
-"Ajamapur"
-"Ambhore"
-"Abhalawadi"
-"Aramapur"
-"Ashvi Khurd"
-"Ashvi Budruk"
-"Ambikhalasa"
-"Ambi Dumala"
-"Umbari"
-"Ojhar Khurd"
-"Ojhar Budruk"
-"Aurangapur"
-"Kanasewadi"
-"Kanakapur"
-"Kanoli"
-"Karule"
-"Karjule Pathar"
-"Karhe"
-"Kakadawadi"
-"Kasara Dumala"
-"Kasare"
-"Kurakutawadi"
-"Kurakundi"
-"Kuran"
-"Kumbharawadi"
-"Kelewadi"
-"Kokanagaon"
-"Kokanewadi"
-"Kolhewadi"
-"Kolavade"
-"Konchi"
-"Kauthe Kamaleshvar"
-"Kauthe Khurd"
-"Kauthe Dhandaraphal"
-"Kauthe Budruk"
-"Kauthe Malakapur"
-"Kauthewadi"
-"Kharashinde"
-"Kharadi"
-"Khali"
-"Khanjapur"
-"Khandagaon"
-"Khandagedara"
-"Khambe"
-"Khandaramalawadi"
-"Gabhanawadi"
-"Gunjalawadi"
-"Gunjalawadi Pathar"
-"Godasewadi"
-"Gharagaon"
-"Ghulewadi"
-"Chanegaon"
-"Chikani"
-"Chikhali"
-"Chinchapur Khurd"
-"Chinchapur Budruk"
-"Chincholi Gurav"
-"Chandanapuri"
-"Javalekadalag"
-"Javale Baleshvar"
-"Jakhuri"
-"Jambut Khurd"
-"Jambut Budruk"
-"Junegaon"
-"Jorve"
-"Jharekathi"
-"Jhole"
-"Digras"
-"Dolasane"
-"Dholewadi"
-"Talegaon"
-"Tigaon"
-"Darewadi"
-"Dadh Khurd"
-"Devakauthe"
-"Devagaon"
-"Dhandaraphal Khurd"
-"Dhandaraphal Budruk"
-"Dhupe"
-"Nannaj Dumala"
-"Nandur Khandaramal"
-"Nanduri Dumala"
-"Nimagaon Khurd"
-"Nimagaonajali"
-"Nimagaon Tembhi"
-"Nimagaon Budruk"
-"Nimagaon Bhojapur"
-"Nimaj"
-"Nimon"
-"Nilavande"
-"Nimbale"
-"Palasakhede"
-"Panodi"
-"Paregaon Khurd"
-"Paregaon Budruk"
-"Pimparane"
-"Pimpalagaon Konjhira"
-"Pimpalagaon Depa"
-"Pimpalagaon Matha"
-"Pimpale"
-"Pimpri Lauki Ajamapur"
-"Pemagiri"
-"Pemarewadi"
-"Pokhari Baleshvar"
-"Pokhari Haveli"
-"Pratapapur"
-"Balapur"
-"Bambalewadi"
-"Birewadi"
-"Bota"
-"Borabanawadi"
-"Bhojadari"
-"Manoli"
-"Mahalawadi"
-"Maladad"
-"Malunje"
-"Malawadi"
-"Malegaon Pathar"
-"Malegaon Haveli"
-"Manchi"
-"Mandave Budruk"
-"Mirjhapur"
-"Mirapur"
-"Megalawadi"
-"Mendhavan"
-"Mangalapur"
-"Mhasavandi"
-"Yelakhopawadi"
-"Ranakhambawadi"
-"Rahimapur"
-"Rajapur"
-"Rayate"
-"Rayatewadi"
-"Lohare"
-"Vadagaonapan"
-"Vadagaon Landaga"
-"Vadajhari Khurd"
-"Vadajhari Budruk"
-"Vanakute"
-"Varavandi"
-"Varudi Pathar"
-"Vaghapur"
-"Velhale"
-"Vaiduwadi"
-"Shibalapur"
-"Shirasagaon"
-"Shirapur"
-"Shivapur"
-"Shindodi"
-"Shedagaon"
-"Shelakewadi"
-"Shendewadi"
-"Samanapur"
-"Sakur"
-"Sadatapur"
-"Sayakhindi"
-"Sarole Pathar"
-"Savaragaon Ghule"
-"Savaragaon Tal"
-"Savarachol"
-"Sangaoni"
-"Sukewadi"
-"Sonewadi"
-"Sonoshi"
-"Sangamaner Khurd"
-"Sangamaner Budruk"
-"Hasanabad"
-"Hivaragaon Pathar"
-"Hivaragaon Pavasa"
-"Hangewadi"
+"Ajamapur",
+"Ambhore",
+"Abhalawadi",
+"Aramapur",
+"Ashvi Khurd",
+"Ashvi Budruk",
+"Ambikhalasa",
+"Ambi Dumala",
+"Umbari",
+"Ojhar Khurd",
+"Ojhar Budruk",
+"Aurangapur",
+"Kanasewadi",
+"Kanakapur",
+"Kanoli",
+"Karule",
+"Karjule Pathar",
+"Karhe",
+"Kakadawadi",
+"Kasara Dumala",
+"Kasare",
+"Kurakutawadi",
+"Kurakundi",
+"Kuran",
+"Kumbharawadi",
+"Kelewadi",
+"Kokanagaon",
+"Kokanewadi",
+"Kolhewadi",
+"Kolavade",
+"Konchi",
+"Kauthe Kamaleshvar",
+"Kauthe Khurd",
+"Kauthe Dhandaraphal",
+"Kauthe Budruk",
+"Kauthe Malakapur",
+"Kauthewadi",
+"Kharashinde",
+"Kharadi",
+"Khali",
+"Khanjapur",
+"Khandagaon",
+"Khandagedara",
+"Khambe",
+"Khandaramalawadi",
+"Gabhanawadi",
+"Gunjalawadi",
+"Gunjalawadi Pathar",
+"Godasewadi",
+"Gharagaon",
+"Ghulewadi",
+"Chanegaon",
+"Chikani",
+"Chikhali",
+"Chinchapur Khurd",
+"Chinchapur Budruk",
+"Chincholi Gurav",
+"Chandanapuri",
+"Javalekadalag",
+"Javale Baleshvar",
+"Jakhuri",
+"Jambut Khurd",
+"Jambut Budruk",
+"Junegaon",
+"Jorve",
+"Jharekathi",
+"Jhole",
+"Digras",
+"Dolasane",
+"Dholewadi",
+"Talegaon",
+"Tigaon",
+"Darewadi",
+"Dadh Khurd",
+"Devakauthe",
+"Devagaon",
+"Dhandaraphal Khurd",
+"Dhandaraphal Budruk",
+"Dhupe",
+"Nannaj Dumala",
+"Nandur Khandaramal",
+"Nanduri Dumala",
+"Nimagaon Khurd",
+"Nimagaonajali",
+"Nimagaon Tembhi",
+"Nimagaon Budruk",
+"Nimagaon Bhojapur",
+"Nimaj",
+"Nimon",
+"Nilavande",
+"Nimbale",
+"Palasakhede",
+"Panodi",
+"Paregaon Khurd",
+"Paregaon Budruk",
+"Pimparane",
+"Pimpalagaon Konjhira",
+"Pimpalagaon Depa",
+"Pimpalagaon Matha",
+"Pimpale",
+"Pimpri Lauki Ajamapur",
+"Pemagiri",
+"Pemarewadi",
+"Pokhari Baleshvar",
+"Pokhari Haveli",
+"Pratapapur",
+"Balapur",
+"Bambalewadi",
+"Birewadi",
+"Bota",
+"Borabanawadi",
+"Bhojadari",
+"Manoli",
+"Mahalawadi",
+"Maladad",
+"Malunje",
+"Malawadi",
+"Malegaon Pathar",
+"Malegaon Haveli",
+"Manchi",
+"Mandave Budruk",
+"Mirjhapur",
+"Mirapur",
+"Megalawadi",
+"Mendhavan",
+"Mangalapur",
+"Mhasavandi",
+"Yelakhopawadi",
+"Ranakhambawadi",
+"Rahimapur",
+"Rajapur",
+"Rayate",
+"Rayatewadi",
+"Lohare",
+"Vadagaonapan",
+"Vadagaon Landaga",
+"Vadajhari Khurd",
+"Vadajhari Budruk",
+"Vanakute",
+"Varavandi",
+"Varudi Pathar",
+"Vaghapur",
+"Velhale",
+"Vaiduwadi",
+"Shibalapur",
+"Shirasagaon",
+"Shirapur",
+"Shivapur",
+"Shindodi",
+"Shedagaon",
+"Shelakewadi",
+"Shendewadi",
+"Samanapur",
+"Sakur",
+"Sadatapur",
+"Sayakhindi",
+"Sarole Pathar",
+"Savaragaon Ghule",
+"Savaragaon Tal",
+"Savarachol",
+"Sangaoni",
+"Sukewadi",
+"Sonewadi",
+"Sonoshi",
+"Sangamaner Khurd",
+"Sangamaner Budruk",
+"Hasanabad",
+"Hivaragaon Pathar",
+"Hivaragaon Pavasa",
+"Hangewadi",
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
