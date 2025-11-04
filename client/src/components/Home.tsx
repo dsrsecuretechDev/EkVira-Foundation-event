@@ -13,11 +13,8 @@ export default function Home() {
 
       {/* Centered Button - moved slightly upward */}
       <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div className="transform -translate-y-10">
-          <TicketButton />
-        </div>
+        <TicketButton />
       </div>
-      
     </div>
   );
 }
