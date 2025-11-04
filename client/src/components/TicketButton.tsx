@@ -31,14 +31,24 @@ export default function TicketButton() {
     fullName: Yup.string().required("पूर्ण नाव आवश्यक आहे"),
     mobileNumber: Yup.string()
       .required("मोबाइल नंबर आवश्यक आहे")
-      .matches(/^[6-9]\d{9}$/, "कृपया वैध भारतीय मोबाइल नंबर टाका (10 अंकांचा असावा)")
-      .test("no-spaces", "मोबाइल नंबरमध्ये स्पेस किंवा विशेष चिन्ह नसावे", (value) => !/[^\d]/.test(value || "")),
+      .matches(
+        /^[6-9]\d{9}$/,
+        "कृपया वैध भारतीय मोबाइल नंबर टाका (10 अंकांचा असावा)"
+      )
+      .test(
+        "no-spaces",
+        "मोबाइल नंबरमध्ये स्पेस किंवा विशेष चिन्ह नसावे",
+        (value) => !/[^\d]/.test(value || "")
+      ),
     address: Yup.string().required("पत्ता आवश्यक आहे"),
     village: Yup.string().required("गाव आवश्यक आहे"),
     sectionName: Yup.string().optional(),
     birthDate: Yup.date()
       .required("जन्मतारीख आवश्यक आहे")
-      .max(new Date(new Date().setFullYear(new Date().getFullYear() - 5)), "वय किमान ५ वर्षे असावे"),
+      .max(
+        new Date(new Date().setFullYear(new Date().getFullYear() - 5)),
+        "वय किमान ५ वर्षे असावे"
+      ),
     coordinatorName: Yup.string().optional(),
     instagramId: Yup.string().optional(),
   });
@@ -96,7 +106,7 @@ export default function TicketButton() {
       const element = document.querySelector(`[name="${firstError}"]`);
       if (element && "focus" in element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
-        element.focus();
+        // element.focus();
       }
     }
   }, [formik.submitCount, formik.errors]);
@@ -160,7 +170,9 @@ export default function TicketButton() {
                   className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white"
                 />
                 {formik.touched.fullName && formik.errors.fullName && (
-                  <p className="text-red-500 text-xs mt-1">{formik.errors.fullName}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formik.errors.fullName}
+                  </p>
                 )}
               </div>
 
@@ -177,7 +189,9 @@ export default function TicketButton() {
                   className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white"
                 />
                 {formik.touched.mobileNumber && formik.errors.mobileNumber && (
-                  <p className="text-red-500 text-xs mt-1">{formik.errors.mobileNumber}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formik.errors.mobileNumber}
+                  </p>
                 )}
               </div>
 
@@ -194,7 +208,9 @@ export default function TicketButton() {
                   className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2"
                 />
                 {formik.touched.address && formik.errors.address && (
-                  <p className="text-red-500 text-xs mt-1">{formik.errors.address}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formik.errors.address}
+                  </p>
                 )}
               </div>
 
@@ -203,7 +219,9 @@ export default function TicketButton() {
 
               {formik.values.village === "संगमनेर शहर" && (
                 <div>
-                  <label className="block text-sm font-medium">विभागाचे नाव</label>
+                  <label className="block text-sm font-medium">
+                    विभागाचे नाव
+                  </label>
                   <select
                     name="sectionName"
                     value={formik.values.sectionName}
@@ -233,13 +251,17 @@ export default function TicketButton() {
                   className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2"
                 />
                 {formik.touched.birthDate && formik.errors.birthDate && (
-                  <p className="text-red-500 text-xs mt-1">{formik.errors.birthDate}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formik.errors.birthDate}
+                  </p>
                 )}
               </div>
 
               {/* Coordinator */}
               <div>
-                <label className="block text-sm font-medium">समन्वयकाचे नाव</label>
+                <label className="block text-sm font-medium">
+                  समन्वयकाचे नाव
+                </label>
                 <input
                   type="text"
                   name="coordinatorName"
@@ -253,7 +275,9 @@ export default function TicketButton() {
 
               {/* Instagram */}
               <div>
-                <label className="block text-sm font-medium">Instagram ID</label>
+                <label className="block text-sm font-medium">
+                  Instagram ID
+                </label>
                 <input
                   type="text"
                   name="instagramId"
