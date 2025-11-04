@@ -109,7 +109,7 @@ const EventTable = () => {
         <table className="min-w-[800px] border-collapse text-sm md:text-base">
           <thead className="bg-blue-100 text-gray-700 sticky top-0 z-10">
             <tr>
-              <th className="border px-3 py-2">#</th>
+              <th className="border px-3 py-2">Sr.No</th>
               <th className="border px-3 py-2">Full Name</th>
               <th className="border px-3 py-2">Mobile</th>
               <th className="border px-3 py-2">Village</th>
