@@ -76,7 +76,7 @@ export const getEventService = async (page = 1, limit = 10, search = "") => {
     .populate("village", "village_name_mr")
     .skip(skip)
     .limit(limit)
-    .sort({ createdAt: -1 });
+    .sort({ createdAt: 1 });
 
   // 📊 Return structured response
   return {
