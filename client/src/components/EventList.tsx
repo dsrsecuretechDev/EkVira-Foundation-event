@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 
 const EventTable = () => {
@@ -33,7 +33,7 @@ const EventTable = () => {
     fetchEvents(page, search);
   }, [page, search]);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e:any) => {
     setSearch(e.target.value);
     setPage(1);
   };
