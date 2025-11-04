@@ -112,6 +112,19 @@ const EventTable = () => {
     window.location.reload();
   };
 
+  const formatDateTime = (isoString: any) => {
+    if (!isoString) return "N/A";
+    const date = new Date(isoString);
+    return date.toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
   return (
     <div className="bg-white text-black p-4 md:p-8 max-w-7xl mx-auto ">
       <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
@@ -132,7 +145,7 @@ const EventTable = () => {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between bg-white rounded-xl shadow-md p-4 sm:p-6 gap-3 sm:gap-0 border border-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between rounded-xl shadow-md p-4 sm:p-6 gap-3 sm:gap-3 ">
             {/* Total Records */}
             <div className="flex items-center space-x-2">
               <span className="text-sm sm:text-base text-gray-600 font-medium">
@@ -247,6 +260,7 @@ const EventTable = () => {
               <th className="border px-3 py-2">Birth Date</th>
               <th className="border px-3 py-2">Instagram ID</th>
               <th className="border px-3 py-2">Address</th>
+              <th className="border px-3 py-2">Register Time and Date</th>
             </tr>
           </thead>
 
@@ -291,6 +305,9 @@ const EventTable = () => {
                   </td>
                   <td className="border px-3 py-2 break-words">
                     {event.address}
+                  </td>
+                  <td className="border px-3 py-2 break-words">
+                    {formatDateTime(event.createdAt)}
                   </td>
                 </tr>
               ))
