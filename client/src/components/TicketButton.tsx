@@ -220,26 +220,21 @@ export default function TicketButton() {
         "कृपया वैध भारतीय मोबाइल नंबर टाका (10 अंकांचा असावा)"
       )
       .test(
-        "no-country-code",
-        "कृपया +91 किंवा 91 विना फक्त 10 अंकांचा मोबाइल नंबर टाका",
-        (value) => !/^(?:\+91|91)/.test(value || "")
-      )
-      .test(
         "no-spaces",
         "मोबाइल नंबरमध्ये स्पेस किंवा विशेष चिन्ह नसावे",
         (value) => !/[^\d]/.test(value || "")
       ),
     address: Yup.string().required("पत्ता आवश्यक आहे"),
     village: Yup.string().required("गाव आवश्यक आहे"),
-    sectionName: Yup.string(), // Optional
+    sectionName: Yup.string().optional(), // Optional
     birthDate: Yup.date()
       .required("जन्मतारीख आवश्यक आहे")
       .max(
         new Date(new Date().setFullYear(new Date().getFullYear() - 5)),
         "वय किमान ५ वर्षे असावे"
       ),
-    coordinatorName: Yup.string().required("समन्वयकाचे नाव आवश्यक आहे"),
-    instagramId: Yup.string(),
+    coordinatorName: Yup.string().optional(), // Optional
+    instagramId: Yup.string().optional(),
   });
 
   // ✅ Base URL (replace for production)
@@ -441,11 +436,13 @@ export default function TicketButton() {
                     value={formik.values.sectionName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
+                    className="w-full  border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
                   >
-                    <option value="">प्रभाग निवडा (ऐच्छिक)</option>
-                    {[...Array(15)].map((_, i) => (
-                      <option key={i + 1} value={i + 1}>
+                    <option className="" value="">
+                      प्रभाग निवडा (ऐच्छिक)
+                    </option>
+                    {[...Array(14)].map((_, i) => (
+                      <option className="text-black" key={i + 1} value={i + 1}>
                         {i + 1}
                       </option>
                     ))}
@@ -513,7 +510,7 @@ export default function TicketButton() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 rounded-full text-sm bg-gray-300 hover:bg-gray-400"
+                  className="px-4 py-2 rounded-full text-sm bg-red-500 hover:bg-red-400"
                 >
                   रद्द करा
                 </button>
@@ -523,7 +520,7 @@ export default function TicketButton() {
                   disabled={!formik.isValid || !formik.dirty}
                   className={`px-4 py-2 rounded-full text-sm text-white ${
                     formik.isValid && formik.dirty
-                      ? "bg-[#2E005C] hover:bg-[#40007F]"
+                      ? "bg-green-500 hover:bg-green-600"
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                 >
