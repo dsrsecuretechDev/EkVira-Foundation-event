@@ -282,7 +282,7 @@ const VillageSelect = ({ formik }:any) => {
 "Hasanabad",
 "Hivaragaon Pathar",
 "Hivaragaon Pavasa",
-"Hangewadi",
+"Hangewadi"
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
