@@ -4,6 +4,7 @@ import Village from "../models/village.model.js"; // adjust path if needed
 
 // 🌾 1. Define seed data
 const villages = [
+  {village_name_mr: "संगमनेर शहर", village_name_en: "sangamner city"},
   { village_name_mr: "अकलापूर", village_name_en: "Akalapur" },
 { village_name_mr: "अजमपुर", village_name_en: "Ajamapur" },
 { village_name_mr: "अंभोरे", village_name_en: "Ambhore" },
