@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import VillageSelect from "./VillageSelect";
 
 const villages = [
   "संगमनेर शहर",
@@ -130,7 +131,7 @@ const villages = [
   "पारेगाव बु",
   "पिंपरणे",
   "पिंपळगाव कोंझिरा",
-   "पिंपळगाव देपा",
+  "पिंपळगाव देपा",
   "पिंपळगाव माथा",
   "पिंपळे",
   "पिंप्री लौकी अजमपुर",
@@ -163,11 +164,11 @@ const villages = [
   "रणखांबवाडी",
   "रहिमपुरा",
   "राजापूर",
-   "रायते",
+  "रायते",
   "रायतेवाडी",
-   "लोहारे",
+  "लोहारे",
   "वडगांवपान",
- "वडगांवलांडगा",
+  "वडगांवलांडगा",
   "वडझरी खुर्द",
   "वडझरी बुद्रुक",
   "वनकुटे",
@@ -192,16 +193,16 @@ const villages = [
   "सावरगांवघुले",
   "सावरगांवतळ",
   "सावरचोळ",
-   "सांगवी",
-   "सुकेवाडी",
-   "सोनेवाडी",
-   "सोनोशी",
-   "संगमनेर खुर्द",
+  "सांगवी",
+  "सुकेवाडी",
+  "सोनेवाडी",
+  "सोनोशी",
+  "संगमनेर खुर्द",
   "संगमनेर बुद्रुक",
   "हसनाबाद",
-   "हिवरगाव पठार",
- "हिवरगाव पावसा",
-   "हंगेवाडी", 
+  "हिवरगाव पठार",
+  "हिवरगाव पावसा",
+  "हंगेवाडी",
 ];
 
 export default function TicketButton() {
@@ -402,7 +403,10 @@ export default function TicketButton() {
                   </p>
                 )}
               </div>
-              <div>
+
+              <VillageSelect formik={formik} villages={villages} />
+
+              {/* <div>
                 <label className="block text-sm font-medium">गाव</label>
                 <select
                   name="village"
@@ -425,7 +429,7 @@ export default function TicketButton() {
                     {formik.errors.village}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               {formik.values.village === "संगमनेर शहर" && (
                 <div>

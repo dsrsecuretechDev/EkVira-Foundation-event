@@ -8,8 +8,7 @@ const EventTable = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // https://event.ekvirafoundation.com/api/v1/event
+  const [totalEvent, setTotalEvent] = useState(0);
 
   const fetchEvents = async (pageNo = 1, query = "") => {
     try {
@@ -19,10 +18,12 @@ const EventTable = () => {
           query
         )}`
       );
+      console.log(res?.data);
 
       if (res.data.success) {
-        setEvents(res.data.events);
-        setTotalPages(res.data.totalPages);
+        setEvents(res?.data?.events);
+        setTotalPages(res?.data?.totalPages);
+        setTotalEvent(res?.data?.totalEvent);
       }
     } catch (err) {
       console.error("Error fetching events:", err);
@@ -46,47 +47,90 @@ const EventTable = () => {
   };
 
   return (
-    <div className="bg-white text-black p-4 md:p-8 max-w-7xl ">
+    <div className="bg-white text-black p-4 md:p-8 max-w-7xl mx-auto ">
       <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
         🎉 इव्हेंट यादी (Event List)
       </h2>
-      <button onClick={handleLogout}>Logout</button>
-      {/* 🔍 Search Bar */}
-      <div className="mb-6 flex justify-center">
-        <input
-          type="text"
-          placeholder="शोधा नाव, मोबाईल, गाव, समन्वयक..."
-          value={search}
-          onChange={handleSearchChange}
-          className="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-2/3 md:w-1/2 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+
+      <div className="w-full px-4 sm:px-6 md:px-8">
+        {/* 🔐 Logout + Search Container */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 mb-6">
+          {/* 🔍 Search Input */}
+          <div className="w-full md:w-2/3 lg:w-1/2">
+            <input
+              type="text"
+              placeholder="शोधा नाव, मोबाईल, गाव, समन्वयक..."
+              value={search}
+              onChange={handleSearchChange}
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full text-base focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500"
+            />
+          </div>
+
+          <span className="text-sm md:text-base text-gray-700 font-medium bg-gray-100 px-3 py-1 rounded-lg shadow-sm">
+            Total Records:{" "}
+            <span className="text-blue-600 font-semibold">
+              {totalEvent || 0}
+            </span>
+          </span>
+
+          {/* 🔐 Logout Button */}
+          <div className="w-full md:w-auto flex justify-end">
+            <button
+              onClick={handleLogout}
+              className="w-full md:w-auto bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition text-base font-medium"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* 🧾 Responsive Table Container */}
-      <div className="overflow-x-auto rounded-xl shadow-md border border-gray-200 bg-white">
-        <table className="min-w-full border-collapse">
-          <thead className="bg-blue-100 text-gray-700 text-sm md:text-base">
+      {/* 🧾 Fixed Size Table Container with Scroll */}
+      <div
+        className="
+          relative
+          border border-gray-300
+          rounded-xl
+          shadow-md
+          bg-white
+          w-full
+          max-w-full
+          overflow-x-auto
+          overflow-y-auto
+          scrollbar-thin
+          scrollbar-thumb-gray-400
+          scrollbar-track-gray-100
+          "
+        style={{
+          height: "80vh",
+          minWidth: "400px",
+        }}
+      >
+        <table className="min-w-[800px] border-collapse text-sm md:text-base">
+          <thead className="bg-blue-100 text-gray-700 sticky top-0 z-10">
             <tr>
-              <th className="border px-2 py-2 md:px-3">#</th>
-              <th className="border px-2 py-2 md:px-3">Full Name</th>
-              <th className="border px-2 py-2 md:px-3">Mobile</th>
-              <th className="border px-2 py-2 md:px-3">Village</th>
-              <th className="border px-2 py-2 md:px-3">Coordinator</th>
-              <th className="border px-2 py-2 md:px-3">Section</th>
-              <th className="border px-2 py-2 md:px-3">Birth Date</th>
-              <th className="border px-2 py-2 md:px-3">Instagram ID</th>
-              <th className="border px-2 py-2 md:px-3">Address</th>
+              <th className="border px-3 py-2">#</th>
+              <th className="border px-3 py-2">Full Name</th>
+              <th className="border px-3 py-2">Mobile</th>
+              <th className="border px-3 py-2">Village</th>
+              <th className="border px-3 py-2">Coordinator</th>
+              <th className="border px-3 py-2">Section</th>
+              <th className="border px-3 py-2">Birth Date</th>
+              <th className="border px-3 py-2">Instagram ID</th>
+              <th className="border px-3 py-2">Address</th>
             </tr>
           </thead>
 
-          <tbody className="text-gray-800 text-sm md:text-base">
+          <tbody className="text-gray-800">
             {loading ? (
               <tr>
-                <td className="text-center py-6 text-gray-500">Loading...</td>
+                <td colSpan={9} className="text-center py-6 text-gray-500">
+                  Loading...
+                </td>
               </tr>
             ) : events.length === 0 ? (
               <tr>
-                <td className="text-center py-6 text-gray-500">
+                <td colSpan={9} className="text-center py-6 text-gray-500">
                   No records found.
                 </td>
               </tr>
@@ -96,25 +140,27 @@ const EventTable = () => {
                   key={event._id}
                   className="hover:bg-gray-50 transition-colors"
                 >
-                  <td className="border px-2 py-2 text-center">
+                  <td className="border px-3 py-2 text-center">
                     {(page - 1) * limit + index + 1}
                   </td>
-                  <td className="border px-2 py-2 break-words">
+                  <td className="border px-3 py-2 break-words">
                     {event.fullName}
                   </td>
-                  <td className="border px-2 py-2">{event.mobileNumber}</td>
-                  <td className="border px-2 py-2">{event.village}</td>
-                  <td className="border px-2 py-2">{event.coordinatorName}</td>
-                  <td className="border px-2 py-2 text-center">
+                  <td className="border px-3 py-2">{event.mobileNumber}</td>
+                  <td className="border px-3 py-2">{event.village}</td>
+                  <td className="border px-3 py-2">{event.coordinatorName}</td>
+                  <td className="border px-3 py-2 text-center">
                     {event.sectionName || "-"}
                   </td>
-                  <td className="border px-2 py-2 text-center">
+                  <td className="border px-3 py-2 text-center">
                     {event.birthDate
                       ? new Date(event.birthDate).toLocaleDateString("en-IN")
                       : "-"}
                   </td>
-                  <td className="border px-2 py-2">{event.instagramId}</td>
-                  <td className="border px-2 py-2 break-words">
+                  <td className="border px-3 py-2 break-words">
+                    {event.instagramId}
+                  </td>
+                  <td className="border px-3 py-2 break-words">
                     {event.address}
                   </td>
                 </tr>
@@ -122,55 +168,27 @@ const EventTable = () => {
             )}
           </tbody>
         </table>
-      </div>
-
-      {/* <div className="md:hidden mt-6 space-y-4">
-        {events.map((event: any, index) => (
-          <div
-            key={event._id}
-            className="border rounded-lg shadow-sm p-3   text-sm"
+        <div className="flex justify-center items-center mt-6 gap-3 flex-wrap">
+          <button
+            disabled={page <= 1}
+            onClick={() => setPage((prev) => prev - 1)}
+            className="px-4 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
           >
-            <div className="flex justify-between font-semibold">
-              <span>
-                {(page - 1) * limit + index + 1}. {event.fullName}
-              </span>
-              <span>{event.mobileNumber}</span>
-            </div>
-            <p className="text-gray-600 mt-1">🏡 {event.village}</p>
-            <p className="text-gray-600">👤 {event.coordinatorName}</p>
-            <p className="text-gray-600">
-              📆{" "}
-              {event.birthDate
-                ? new Date(event.birthDate).toLocaleDateString("en-IN")
-                : "-"}
-            </p>
-            <p className="text-gray-600">📸 {event.instagramId}</p>
-            <p className="text-gray-600">📍 {event.address}</p>
-          </div>
-        ))}
-      </div> */}
+            ⬅ Prev
+          </button>
 
-      {/* 🔄 Pagination */}
-      <div className="flex justify-center items-center mt-6 gap-3 flex-wrap">
-        <button
-          disabled={page <= 1}
-          onClick={() => setPage((prev) => prev - 1)}
-          className="px-4 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-        >
-          ⬅ Prev
-        </button>
+          <span className="px-4 py-2 font-medium">
+            Page {page} of {totalPages}
+          </span>
 
-        <span className="px-4 py-2 font-medium">
-          Page {page} of {totalPages}
-        </span>
-
-        <button
-          disabled={page >= totalPages}
-          onClick={() => setPage((prev) => prev + 1)}
-          className="px-4 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-        >
-          Next ➡
-        </button>
+          <button
+            disabled={page >= totalPages}
+            onClick={() => setPage((prev) => prev + 1)}
+            className="px-4 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+          >
+            Next ➡
+          </button>
+        </div>
       </div>
     </div>
   );
