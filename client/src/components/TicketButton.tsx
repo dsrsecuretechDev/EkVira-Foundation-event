@@ -76,17 +76,17 @@ export default function TicketButton() {
         console.error("❌ Error submitting form:", error);
 
         // ✅ Handle common error cases
-        if (error.response) {
+        if (axios.isAxiosError(error)) {
           // 🟥 Server responded but error status (4xx / 5xx)
           const message =
-            error.response.data?.message ||
+            error?.response?.data?.message ||
             "सर्व्हरवरून त्रुटी आली. कृपया पुन्हा प्रयत्न करा.";
           setApiError(message);
-        } else if (error.request) {
-          // 🟧 Request sent but no response (network)
-          const message = "नेटवर्क समस्या आली. कृपया इंटरनेट तपासा.";
-          setApiError(message);
-          toast.error(`❌ ${message}`);
+          // } else if (error.request) {
+          //   // 🟧 Request sent but no response (network)
+          //   const message = "नेटवर्क समस्या आली. कृपया इंटरनेट तपासा.";
+          //   setApiError(message);
+          //   toast.error(`❌ ${message}`);
         } else {
           // 🟨 Other unknown error
           const message = "अज्ञात त्रुटी आली. कृपया पुन्हा प्रयत्न करा.";
@@ -105,9 +105,14 @@ export default function TicketButton() {
     if (formik.submitCount > 0 && Object.keys(formik.errors).length > 0) {
       const firstError = Object.keys(formik.errors)[0];
       const element = document.querySelector(`[name="${firstError}"]`);
-      if (element) {
+
+      if (
+        element &&
+        "focus" in element &&
+        typeof (element as HTMLElement).focus === "function"
+      ) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
-        element.focus();
+        (element as HTMLElement).focus();
       }
     }
   }, [formik.submitCount, formik.errors]);
