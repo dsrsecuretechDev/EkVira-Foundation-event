@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const EventTable = () => {
@@ -9,11 +9,13 @@ const EventTable = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // https://event.ekvirafoundation.com/api/v1/event
+
   const fetchEvents = async (pageNo = 1, query = "") => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/v1/event/?page=${pageNo}&limit=${limit}&search=${encodeURIComponent(
+        `https://event.ekvirafoundation.com/api/v1/event/?page=${pageNo}&limit=${limit}&search=${encodeURIComponent(
           query
         )}`
       );
@@ -33,7 +35,7 @@ const EventTable = () => {
     fetchEvents(page, search);
   }, [page, search]);
 
-  const handleSearchChange = (e:any) => {
+  const handleSearchChange = (e: any) => {
     setSearch(e.target.value);
     setPage(1);
   };
