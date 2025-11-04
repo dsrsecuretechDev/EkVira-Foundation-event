@@ -50,7 +50,7 @@ const EventTable = () => {
     try {
       // Exponential backoff logic for retries (omitted for brevity, but recommended in production)
       const response = await fetch(
-        "https://event.ekvirafoundation.com/api/v1/event/excel",
+        `https://event.ekvirafoundation.com/api/v1/event/sort-excel/?search=${search}`,
         {
           method: "GET",
         }
