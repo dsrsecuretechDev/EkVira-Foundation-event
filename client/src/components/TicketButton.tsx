@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const villages = [
-    "संगमनेर शहर",
+  "संगमनेर शहर",
   "अकलापूर",
   "अंभोरे",
   "आनंदवाडी",
@@ -141,8 +141,21 @@ export default function TicketButton() {
   const validationSchema = Yup.object({
     fullName: Yup.string().required("पूर्ण नाव आवश्यक आहे"),
     mobileNumber: Yup.string()
-      .matches(/^[0-9]{10}$/, "कृपया योग्य 10 अंकी मोबाइल नंबर भरा")
-      .required("मोबाइल नंबर आवश्यक आहे"),
+      .required("मोबाइल नंबर आवश्यक आहे")
+      .matches(
+        /^[6-9]\d{9}$/,
+        "कृपया वैध भारतीय मोबाइल नंबर टाका (10 अंकांचा असावा)"
+      )
+      .test(
+        "no-country-code",
+        "कृपया +91 किंवा 91 विना फक्त 10 अंकांचा मोबाइल नंबर टाका",
+        (value) => !/^(?:\+91|91)/.test(value || "")
+      )
+      .test(
+        "no-spaces",
+        "मोबाइल नंबरमध्ये स्पेस किंवा विशेष चिन्ह नसावे",
+        (value) => !/[^\d]/.test(value || "")
+      ),
     address: Yup.string().required("पत्ता आवश्यक आहे"),
     village: Yup.string().required("गाव आवश्यक आहे"),
     sectionName: Yup.string(), // Optional
@@ -243,11 +256,13 @@ export default function TicketButton() {
 
       {/* Popup Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-[#cf94e1] text-black rounded-2xl shadow-lg p-6 w-96 relative animate-fadeIn">
+        <div className="fixed inset-0 bg-opacity-10 flex items-center justify-center z-50">
+          <div className="bg-[#20063b]  bg-opacity-100 text-white rounded-2xl shadow-lg p-6 w-96 relative animate-fadeIn">
             <h2 className="text-lg font-semibold mb-4 text-center">
               🎟️ कार्यक्रम प्रवेशपत्रिका
             </h2>
+
+            <hr className="m-6" />
 
             {/* API Error Message */}
             {apiError && (
@@ -271,7 +286,7 @@ export default function TicketButton() {
                   value={formik.values.fullName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
+                  className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white-800 "
                 />
                 {formik.touched.fullName && formik.errors.fullName && (
                   <p className="text-red-500 text-xs mt-1">
@@ -288,7 +303,7 @@ export default function TicketButton() {
                   value={formik.values.mobileNumber}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
+                  className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 hover:border-white-800 "
                 />
                 {formik.touched.mobileNumber && formik.errors.mobileNumber && (
                   <p className="text-red-500 text-xs mt-1">
