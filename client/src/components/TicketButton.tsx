@@ -313,14 +313,36 @@ export default function TicketButton() {
   }, [formik.submitCount, formik.errors]);
 
   return (
-    <div>
-      {/* Main Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-400 underline underline-offset-4 decoration-red-500 transition"
-      >
-        कार्यक्रम प्रवेशपत्रिका
-      </button>
+    <div className="">
+      {/* <div className="flex items-center justify-center transform -translate-y-10 sm:-translate-y-16 md:-translate-y-20">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-white text-black  text-purple-800 font-[1000] rounded-2xl transition hover:bg-gray-400 flex items-center justify-center text-center w-[80%] sm:w-96 md:w-[28rem] lg:w-[28rem] h-20 sm:h-24 md:h-40 lg:h-60 text-xl sm:text-2xl md:text-4xl lg:text-7xl lg:font-extrabold px-4 py-2 font-NotoSans
+    "
+        >
+          कार्यक्रम प्रवेशपत्रिका
+        </button>
+      </div> */}
+
+      <div className="flex items-center justify-center transform -translate-y-10 sm:-translate-y-16 md:-translate-y-20">
+        {/* Main Button */}
+        <button
+          onClick={() => setIsOpen(true)}
+          className="
+      bg-white text-purple-900 font-extrabold 
+      rounded-2xl transition hover:bg-gray-400
+      flex items-center justify-center text-center
+      w-[80%] sm:w-96 md:w-[28rem] lg:w-[28rem]
+      h-20 sm:h-24 md:h-40 lg:h-60
+      text-xl sm:text-2xl md:text-4xl lg:text-7xl
+      px-4 py-2 
+    "
+        >
+          कार्यक्रम प्रवेशपत्रिका
+        </button>
+      </div>
+
+      {/* "Noto Sans", sans-serif; */}
 
       {/* Popup Modal */}
       {isOpen && (

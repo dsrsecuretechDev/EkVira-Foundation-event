@@ -3,21 +3,21 @@ import img from "../assets/FolkAkhyan.jpg";
 
 export default function Home() {
   return (
-    <div className="relative w-full h-screen  flex items-center justify-center overflow-hidden">
-      {/* Fullscreen Image - Always fully visible */}
+    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* Fullscreen Image */}
       <img
-        src={img} // Replace with your uploaded image path or Cloudinary link
+        src={img} // Replace with your image path or Cloudinary link
         alt="The Folk Abhiyan"
         className="w-full h-full object-contain"
       />
 
-      {/* Optional overlay for better contrast */}
-      {/* <div className="absolute inset-0 bg-black/20"></div> */}
-
-      {/* Centered Button */}
-      <div className="absolute inset-10 flex items-center justify-center z-4">
-        <TicketButton />
+      {/* Centered Button - moved slightly upward */}
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+        <div className="transform -translate-y-10">
+          <TicketButton />
+        </div>
       </div>
+      
     </div>
   );
 }
