@@ -43,7 +43,7 @@ export default function TicketButton() {
   });
 
   // ✅ Base URL (replace for production)
-  const baseURL = "http://localhost:5000/api/v1/event/";
+  const baseURL = "http://event.ekvirafoundation.com/api/v1/event";
 
   // ✅ Formik setup
   const formik = useFormik({
