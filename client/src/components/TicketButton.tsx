@@ -352,7 +352,7 @@ export default function TicketButton() {
                     onBlur={formik.handleBlur}
                     className="w-full border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#2E005C]"
                   >
-                    <option value="">विभाग निवडा (ऐच्छिक)</option>
+                    <option value="">प्रभाग निवडा (ऐच्छिक)</option>
                     {[...Array(15)].map((_, i) => (
                       <option key={i + 1} value={i + 1}>
                         {i + 1}
