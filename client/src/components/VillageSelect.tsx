@@ -112,7 +112,7 @@ const VillageSelect = ({ formik }:any) => {
     "पिंपरणे",
     "पिंपळगाव कोंझिरा",
     "sangamner city",
-    "Akalapur"
+    "Akalapur",
 "Ajamapur",
 "Ambhore",
 "Abhalawadi",
