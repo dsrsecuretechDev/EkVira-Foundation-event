@@ -1,5 +1,6 @@
-import TicketButton from "./TicketButton";
-import img from "../assets/ek_wira.png";
+// import TicketButton from "./TicketButton";
+// import img from "../assets/ek_wira.png";
+import img from "../assets/update.jpeg";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
 
       {/* Centered Button - moved slightly upward */}
       <div className="absolute inset-0 flex items-center justify-center z-10">
-        <TicketButton />
+        {/* <TicketButton /> */}
       </div>
     </div>
   );
